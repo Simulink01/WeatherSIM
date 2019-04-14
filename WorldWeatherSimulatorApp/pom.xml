@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cba.weather</groupId>
+  <artifactId>WorldWeatherSimulatorApp</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>WorldWeatherSimulatorApp</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+        <java.version>1.8</java.version>
+    </properties>
+  <dependencies>
+ <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.11</version>
+</dependency>
+    <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.0</version>
+</dependency>
+<dependency>
+    <groupId>com.opencsv</groupId>
+    <artifactId>opencsv</artifactId>
+    <version>3.3</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+<dependency>
+    <groupId>joda-time</groupId>
+    <artifactId>joda-time</artifactId>
+    <version>2.9.2</version>
+</dependency>
+  </dependencies>
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                 <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+                <configuration>
+                  <appendAssemblyId>false</appendAssemblyId>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.cba.weather.view.WeatherApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin> 
+                   
+        </plugins>
+    </build>
+</project>
